@@ -1,0 +1,41 @@
+body{
+
+    background-color: #efeeee;
+}
+.container{
+
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.container .pname{
+    width: 100px;
+    height: 50px;
+
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow .2s ease-out;
+    position: relative;
+}
+.i1{
+    width: 100%;
+    height: 100%;
+    position:fixed;
+    	bottom:0;
+	background:transparent;	/*按钮背景透明*/
+	border-width:0px;	/*边框透明*/
+	outline:none;	/*点击后没边框*/
+}
+.i2{
+    display: none;
+    width: 100%;
+    height: 100%;
+    position:fixed;
+    	bottom:0;
+	background:transparent;	/*按钮背景透明*/
+	border-width:0px;	/*边框透明*/
+	outline:none;	/*点击后没边框*/
+}
