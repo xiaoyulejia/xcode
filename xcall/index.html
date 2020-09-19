@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title style="text-align: center;">点名器©小娱乐家</title>
+</head>
+
+<body>
+    <!-- 设置网页的标题 -->
+    <h1 style="text-align: center;color:#585858;"><br><b>幸运观众</b></h1>
+    <!-- 设置时间显示位置根据ID再js中调用方法显示 -->
+    <div color="#33FFFF" style="text-align: right;"><span id="nowDateTimeSpan"></span></div><br>
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    //定义数组存储名单(修改名字看这里)
+    var student = "a,b,c";
+    var arrs = student.split(",")
+
+    //创建表格并赋值
+    var j = 0;
+    htmlstr = "<table class=container border=0  align=center cellspacing=10 cellpadding=3>"
+    htmlstr += "<tr>"
+        //进行循环创建表格 每排9个表格，根据arrs数组个数创建
+    for (j; j <= arrs.length - 1; j++) {
+        if (j % 9 == 0) {
+            htmlstr += "<tr>"
+        }
+        htmlstr += "<td class=pname name=strtd align=center bgcolor=#ACE3CC>" + arrs[j] + "<td>"
+    }
+    htmlstr += "<tr>"
+    htmlstr += "</table >"
+    document.write(htmlstr)
+
+    //设置一个arrs数组长度的随机数
+    function rand() {
+        let rand = Math.random()
+        return rand2 = Math.floor(rand * arrs.length - 1)
+    }
+    rand();
+    //绑定事件
+    //开始事件
+    function kaishi() {
+        //获取开始按钮并且通过disabled来禁用多次点击
+        var dis = document.getElementById("input1")
+        var dis1 = document.getElementById("input2")
+
+        dis.style.display = "none"
+        dis1.style.display = "flex"
+
+        dis.setAttribute("disabled", "disabled")
+            //检查是否存在已经选定的表格根据是否存在ID来选择
+        var reds = document.getElementById("reds")
+            //如果存在已经变色的表格就将其变回来然后删除ID
+        if (reds != null) {
+            reds.setAttribute("bgcolor", "#ACE3CC")
+            reds.removeAttribute("id")
+        }
+        //获取所有的表格元素组成数组
+        var td = document.getElementsByName("strtd")
+            //定义一个循环事件 ，随机表格颜色变色
+        one = setInterval(function() {
+            var ran = rand()
+            td[ran].setAttribute("bgcolor", "#F9625B")
+            setTimeout(function() {
+                td[ran].setAttribute("bgcolor", "#ACE3CC")
+            }, 100)
+        }, 100)
+    }
+    //停止事件
+    function tingzhi() {
+        //先查找是否存在已经变色的表格
+        var reds1 = document.getElementById("reds")
+            //如果存在就停止开始按钮
+        if (reds1 == null) {
+            clearInterval(one)
+                //同时解除开始按钮的禁用状态
+            var dis = document.getElementById("input1")
+            var dis1 = document.getElementById("input2")
+            dis1.style.display = "none"
+            dis.style.display = "flex"
+            dis.removeAttribute("disabled")
+                //进行最后一次随机选定一个表格变色并且给该表格添加ID元素并且赋值
+            var td = document.getElementsByName("strtd")
+            one = setTimeout(function() {
+                var ran = rand()
+                td[ran].setAttribute("bgcolor", "#F9625B")
+                td[ran].setAttribute("id", "reds")
+            }, 1)
+        } else {
+            //如果存在一个选定的变色表格就说明尚未开始 发出弹窗提示
+            alert("请点击开始后再停止")
+        }
+    }
+</script>
+
+<body>
+    <!-- 创建按钮 -->
+    <table style="table-layout: fixed;" width="100%" height="100%" cellspacing="0" cellpadding="2">
+        <tr></tr>
+        <tr>
+            <td align="center">
+                <input class=i1 id="input1" onclick="kaishi()" type="button" value="">
+                <input class=i2 id="input2" onclick="tingzhi()" type="button" value="">
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
+
+<script>
+    var rand1 = Math.floor(Math.random() * (100 - 0)) + 0 //产生一个随机数  //的到这个数的第五个字符(实际还是从0~9的数字)  
+    quotes = new Array //创建消息数组  
+    text = new Array
+    text[1] = 'impossible的完整形式是i\'m possible '
+    text[2] = '在你最冷的时候，有人不顾自己寒冷抱着你，这就是幸福。'
+    text[3] = '输了你，赢了这个世界也没意义'
+    text[4] = '我们在年少时并不知道，有些乐章一旦开始，唱的就是曲终人散。'
+    text[5] = '数星星的孩子，是在和夜晚的星空交谈，而不是为了得到一个数字。'
+    text[6] = '历史虽然会一再重演，但人类却无法回到过去。 ---海贼王'
+    text[7] = '层峦耸翠，上出重霄；飞阁流丹，下临无地。 ---滕王阁序'
+    text[8] = '正因为不会发生，所以才叫奇迹。 ---Kanon'
+    text[9] = '那不是温柔，那不过是软弱罢了 ---原创'
+    text[10] = '想留的人却总难留，想说的话都到嘴边。 ---互联网 '
+    text[11] = '一本书上每多一个公式，就会减少一半读者。 ---名人名言'
+    text[12] = '恰沐春风共同游，终只叹，木已舟。 ---网易云'
+    text[13] = '言者无罪，闻者足戒。 ---诗经·周南·关雎·序'
+    text[14] = '一个细胞里，却分裂出了两种截然不同的命运。 ---法医秦明'
+    text[15] = '不管风吹浪打，胜似闲庭信步。 ---毛泽东语录精选'
+    text[16] = '宇宙说：你所斗争的黑暗就在你心中，你所寻找的光明就在你心中。 ---Minecraft'
+    text[17] = '胜而不灭，霸而不辱，这才是真正的征服。 ---fate zero'
+    text[18] = '既然没有终点，那在何处又何妨呢。 ---异度侵入'
+    text[19] = '光，火交错，诞生了夕阳。 ---无'
+    text[20] = '一定没有问题的！ ---魔卡少女樱'
+    text[21] = '不管你说再多的慌，只有自己的内心，是无法欺骗的啊。 ---七大罪'
+    text[22] = ' 隔着屏幕轻易产生感情的你，肯定很孤独吧。—《you\'re somebody else》'
+    text[23] = '视力已经下降到无可救药的地步了，打开钱包看不到钱，太恐怖了。'
+    text[24] = '没有任何灾难比人本身更可怕--木鱼水心'
+    text[25] = '天下没有无条件的信任－－切尔诺贝利事件'
+    text[26] = '即使是不顺心的时候，烦躁的时候，花儿枯萎的时候，云层上面也一直都是晴天。这么一想，又有继续下去的动力了－－牵牛花与加濑同学'
+    text[27] = '“Love is the one thing that transcends time and space. “ - Amelia '
+    text[28] = '人类常常自信地把这些科学成就完全归功于人类本身，却常常忘却了我们只是这些科学规律的发现者，对于自然和规律，我们必须心存敬畏。'
+    text[29] = '当事与愿违，我们用谎言编制谎言，直到我们忘记真相的存在。我们每撒一个谎，就欠真理一条债。－－－－列加索夫教授'
+    text[30] = '即便如此我也会前进的，哪怕是这令人头昏眼花的夜 ---ゴーストルール'
+    text[31] = '苦其心志，饿其体肤，空乏其身，行拂乱其所为。 ---孟子'
+    text[32] = '你还欠我一句对不起，可我不会再说没关系了。'
+    text[33] = '我爱你，与你有何相干？毁灭你，又与你有何相干？ ---三体'
+    text[34] = '沉舟侧畔千帆过，病树前头万木春。 ---酬乐天扬州初逢席上见赠'
+    text[35] = '山随平野尽，江入大荒流。 ---渡荆门送别'
+    text[36] = '所以我松开拳头用手握紧笔，作为自己作为人类也作为你。 ---贰拾'
+    text[37] = '荷尔蒙决定一见钟情，多巴胺决定天长地久。 ---网易云'
+    text[38] = 'H什么的最讨厌了！ ---网络'
+    text[39] = '人生用特写镜头来看是悲剧，长镜头来看则是喜剧。'
+    text[40] = '把温柔和心软留给值得的人。'
+    text[41] = '夜深忽梦少年事，唯梦闲人不梦君。'
+    text[42] = '远方未必远，未来一定来。'
+    text[43] = '人生真是讽刺，一个人竟然可以变成自己曾经最讨厌的样子'
+    text[44] = '流浪去吧，总会在世界的一角找到愿意懂你的人。'
+    text[45] = '下辈子变成你喜欢的人，然后不喜欢你！'
+    text[46] = '人的欲望永无止境，就像我一开始，也只是想知道你的名字。'
+    text[47] = '可这世间疾苦，照样没放过我'
+    text[48] = '活着就是为了改变世界。'
+    text[49] = '前路还很长，我会越来越好，你也不会差。我们各自珍重。'
+    text[50] = '小时候怕鬼，因为他们面目狰狞；长大后怕人，因为他们衣冠楚楚。'
+    text[51] = '风筝的线你随时可以放开，只是别盼望我会回来'
+    text[52] = '愿你的青春如花般绽放。'
+    text[53] = '雪崩时，没有一片雪花是无辜的！'
+    text[54] = '有钱人的生活，往往就是这么朴实无华，且枯燥。'
+    text[55] = '鱼与熊掌不可兼得，唯独穷和单身可以'
+    text[56] = '缘，妙不可言'
+    text[57] = '那么，问题来了…'
+    text[58] = '人生就像爬楼梯，只有脚踏实地的向上，才能到达屋顶。'
+    text[59] = '没有什么过不去，只是再也回不去。'
+    text[60] = '只有除了爱情什么都不缺的人，才有底气去等待爱情。'
+    text[61] = '就算终有一散也别辜负相遇。'
+    text[62] = '对于讨厌的人不要想改变他，远离他才是上策。'
+    text[63] = '有些父母宁愿相信不真实的营销号，也不愿意相信自己的孩子。'
+    text[64] = '这个世界上没有忽然崩溃的感情，只有压弯骆驼的最后一根稻草。'
+    text[65] = '我觉得，我这辈子最灿烂的笑容，大概都奉献给我电脑屏幕了。'
+    text[66] = '爱永远不是在乎，而是正确的表达。'
+    text[67] = '一懒众衫小'
+    text[68] = '生活中若没有朋友，就像生活中没有阳光一样。'
+    text[69] = '既然认准这条路，何必去打听要走多久。'
+    text[70] = '对于讨厌的人不要想改变他，远离他才是上策。'
+    text[71] = '我拯救了全世界，全世界却抛弃了我。'
+    text[72] = '你依然让我觉得美好且心动，但我已经没有力气和勇气再去拥抱。'
+    text[73] = '没有什么过不去，只是再也回不去。'
+    text[74] = '水的清澈，并非因为它不含杂质，而是在于懂得沉淀。'
+    text[75] = '过去的事情可以不忘记，但一定要放下。'
+    text[76] = '夏天重要的事不过一二：能够静静吹风，可以好好吃饭。'
+    text[77] = '与其诅咒黑暗，不如点亮烛光'
+    text[78] = '每一次选择，都要为其承担后果。'
+    text[79] = '小时候哭着哭着就笑了，长大后笑着笑着就哭了。'
+    text[80] = '我寻了半生的春天，你一笑便是了。'
+    text[81] = '天空本是一种风景，可是遇见你之后，它变成了一种心情。'
+    text[82] = '今天地铁上明显少了很多人。'
+    text[83] = '如果必须要失去，那么不如一开始就不曾拥有。'
+    text[84] = '从不犯错误的人终将一事无成'
+    text[85] = '生命在于折腾，生命不息，折腾不止'
+    text[86] = '黎明之前总有一段时间特别黑。'
+    text[87] = '流浪去吧，总会在世界的一角找到愿意懂你的人。'
+    text[88] = '你什么时候放下，什么时候就没有烦恼'
+    text[89] = '只要一息尚存，就还有希望。'
+    text[90] = '一切不谈语境的真理都是耍流氓'
+    text[91] = '花开如火，也如寂寞。'
+    text[92] = '不忘初心，方得始终。'
+    text[93] = '一天很短，开心了就笑，不开心了就过会儿再笑。'
+    text[94] = 'We\'re here to put a dent in the universe. Otherwise why else even be here?'
+    text[95] = '为什么你宁愿吃生活上的苦 而不愿意吃学习上的苦？'
+    text[96] = '难受就是难受…不要让开心变成一种负担…'
+    text[97] = '行为发展成习惯，习惯发展成为性格，性格伴随人的一生。'
+    text[98] = '向来是据理力争，从不曾无理取闹。'
+    text[99] = '请成为永远疯狂 ，永远浪漫 ，永远清澈的存在。'
+    text[100] = '你只需看着别人精彩，老天对你另有安排'
+    text[0] = '忘记本身就是一件不可能的事情，别妄想了。 ---来自网络' //由随机数选择
+</script>
+
+<script align="center">
+    document.write('<br></br><center>' + text[rand1] + '</center>')
+</script>
