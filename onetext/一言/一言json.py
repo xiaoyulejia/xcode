@@ -4,7 +4,9 @@ import os
 import json  
 
 n = 1
+b = 0
 m = int(input("抓取次数:"))
+
 def get_content (url):
    resp = requests.get(url)
    resp.encoding="utf-8"
@@ -24,13 +26,14 @@ class Logger(object):
         pass
  
 
-path = os.path.abspath(os.path.dirname(__file__))
-type = sys.getfilesystemencoding()
-sys.stdout = Logger('a.txt')
+##path = os.path.abspath(os.path.dirname(__file__))
+##type = sys.getfilesystemencoding()
+##sys.stdout = Logger('a.txt')
  
 
 while n <= m:
    content = get_content(url)
    load_data = json.loads(content)
-   print (load_data['hitokoto'] + '-- ' +  load_data['from'])
+   print ("text[" + str(b) + "] = " + '\'' + load_data['hitokoto'] + '-- ' +  load_data['from'] + '\'')
    n = n+1
+   b = b+1

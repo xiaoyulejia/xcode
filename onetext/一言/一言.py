@@ -33,6 +33,6 @@ class Logger(object):
 
 while n <= m:
    content = get_content(url)
-   print("text["+ str(b) +"]"+'\''+content[0:100]+'\'')
+   print("text["+ str(b) +"] = "+'\''+content[0:100]+'\'')
    n = n+1
    b = b+1
